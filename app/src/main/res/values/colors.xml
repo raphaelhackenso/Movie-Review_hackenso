@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- change color theme #008577, #00574B, #D81B60  -->
+    <color name="colorPrimary">#0A24C1</color>
+    <color name="colorPrimaryDark">#3E92CC</color>
+    <color name="colorAccent">#D83B60</color>
+</resources>
