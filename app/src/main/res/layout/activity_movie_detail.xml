@@ -10,13 +10,12 @@
         android:id="@+id/detail_movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/detail_movie_image_backdrop" />
 
     <LinearLayout
         android:id="@+id/detail_ll_1"
@@ -36,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Director"
+            android:text="@string/director"
             android:textAlignment="textStart" />
 
         <TextView
@@ -44,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textAlignment="textStart" />
     </LinearLayout>
 
@@ -66,15 +64,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Actors"
+            android:text="@string/actors"
             android:textAlignment="textStart" />
 
         <TextView
             android:id="@+id/detail_movie_actors_output"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -95,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Genre"
+            android:text="@string/genre"
             android:textAlignment="textStart" />
 
         <TextView
@@ -103,7 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textAlignment="textStart" />
     </LinearLayout>
 
@@ -132,7 +128,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textAlignment="textEnd" />
 
         <TextView
@@ -140,7 +135,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textAlignment="textEnd" />
     </LinearLayout>
 
@@ -162,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Release"
+            android:text="@string/release"
             android:textAlignment="textStart" />
 
         <TextView
@@ -170,7 +164,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textAlignment="textStart" />
 
     </LinearLayout>
@@ -193,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Plot"
+            android:text="@string/plot"
             android:textAlignment="textStart" />
     </LinearLayout>
 
@@ -214,7 +207,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -225,18 +217,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
-        android:text="RATE MOVIE"
+        android:text="@string/rate_movie"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_ll_7" />
 
-    <Button
-        android:id="@+id/detail_movie_btn_watch_trailer"
+    <ImageView
+        android:id="@+id/detail_movie_image_poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="WATCH  TRAILER"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detail_movie_btn_rate"
-        app:layout_constraintTop_toBottomOf="@+id/detail_ll_7" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]"
+        tools:contentDescription="@string/poster_description"/>
+
+    <ImageView
+        android:id="@+id/detail_movie_image_backdrop"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[4]"
+        tools:contentDescription="@string/backdrop_description"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

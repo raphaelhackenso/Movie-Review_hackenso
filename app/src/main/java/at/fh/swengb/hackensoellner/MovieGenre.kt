@@ -6,4 +6,6 @@ enum class MovieGenre(val description: String ) {
     DRAMA("Drama"),
     COMEDY("Comedy"),
     HORROR("Horror")
+
+    //TODO remove
 }

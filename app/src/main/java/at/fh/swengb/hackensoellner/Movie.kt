@@ -1,14 +1,14 @@
 package at.fh.swengb.hackensoellner
 
-class Movie(val id: String,
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+open class Movie(val id: String,
             val title: String,
             val release: String,
-            val plot: String,
-            val genre: MovieGenre,
-            val director: Person,
-            val actors: List<Person>,
-            val reviews: MutableList<Review>,
-            val trailer: String //Addition to the given UML-diagram
+            val posterImagePath: String,
+            val backdropImagePath: String,
+            val reviews: MutableList<Review>
              ) {
 
     fun ratingAverage(): Double{

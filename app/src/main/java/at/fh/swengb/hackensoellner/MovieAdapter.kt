@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieAdapter(val clickListener: (movie: Movie) -> Unit): RecyclerView.Adapter<MovieViewHolder>(){
@@ -36,15 +37,16 @@ class MovieAdapter(val clickListener: (movie: Movie) -> Unit): RecyclerView.Adap
 class MovieViewHolder(itemView: View, val clickListener: (movie: Movie) -> Unit): RecyclerView.ViewHolder(itemView){
     fun bindItem(movie: Movie){
 
+        //TODO für alle das richtige und die neuen Bilder
         //Output content for one movie item
-        itemView.item_movie_name.text = movie.title
-        itemView.item_movie_release_date.text = movie.release
-        itemView.item_movie_actor_1.text = movie.actors[0]?.name
-        itemView.item_movie_actor_2.text = movie.actors[1]?.name
+        itemView.item_movie_title.text = movie.title
+        Glide
+            .with(itemView)
+            .load(movie.posterImagePath)
+            .into(itemView.image_movie_poster_item)
 
-        itemView.item_movie_avg_rating_bar.rating = movie.ratingAverage().toFloat()
-        itemView.item_movie_avg_rating_value.text = movie.ratingAverage().toString()
-        itemView.item_movie_rating_count.text = movie.reviews.count().toString()
+
+        //TODO GLIDE implementieren!
 
         itemView.setOnClickListener{
             clickListener(movie)

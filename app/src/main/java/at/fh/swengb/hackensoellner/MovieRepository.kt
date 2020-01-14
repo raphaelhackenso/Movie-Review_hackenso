@@ -1,10 +1,16 @@
 package at.fh.swengb.hackensoellner
 
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 object  MovieRepository{
 
-    private val movies: List<Movie>
+    //private val movies: List<Movie>
 
 
+    // Local movie-repo not needed anymore
+    /*
     init {
         movies = listOf(
             Movie("0","The Imitation Game","22.01.2015",
@@ -156,20 +162,86 @@ object  MovieRepository{
         )
 
     }
+     */
 
+    /* -- Old function for the movieList
     //func to return a MovieList
     fun movieList(): List<Movie>{
         return movies
     }
+     */
 
+    fun movieList(success: (movieList: List<Movie>) -> Unit, error: (errorMessage: String) -> Unit) {
+        MovieApi.retrofitService.movies().enqueue(object: Callback<List<Movie>> {
+            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+                error("API call failed") //TODO how to use the string resource
+            }
+
+            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    success(responseBody)
+                } else {
+                    error("Something went wrong") //TODO string resource
+                }
+            }
+
+        })
+    }
+
+
+    /* Old function to find movie by ID
     //func to find a movie by it's Id
     fun movieById(id: String): Movie?{
         return movies.find { it.id == id }
     }
+     */
 
+    //TODO brauch ich da movieByIDDEtail
+    //TODO brauch ich eigene movieByID mit nur Movie
+
+    fun movieById(id:String, success: (movie: MovieDetail) -> Unit, error: (errorMessage: String) -> Unit){
+        MovieApi.retrofitService.movieByID(id).enqueue(object: Callback<MovieDetail> {
+            override fun onFailure(call: Call<MovieDetail>, t: Throwable) {
+                error("The call failed")
+            }
+
+            override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    success(responseBody)
+                } else {
+                    error("Something went wrong")
+                }
+            }
+
+        })
+
+    }
+
+
+
+    /* Old function to rate a movie
     //func to rate a given movie
     fun rateMovie(id: String, review: Review){
         movieById(id)?.reviews?.add(review)
+    }
+     */
+    fun rateMovie(id: String, rating: Review, success: (Unit: Unit) -> Unit, error: (errorMessage: String) -> Unit){
+        MovieApi.retrofitService.rateMovie(id, rating).enqueue(object: Callback<Unit> {
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                error("The call failed")
+            }
+
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    success(responseBody)
+                } else {
+                    error("Something went wrong")
+                }
+            }
+        })
     }
 
 

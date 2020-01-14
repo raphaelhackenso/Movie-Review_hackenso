@@ -2,8 +2,12 @@ package at.fh.swengb.hackensoellner
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //TODO brauch ma da an API call für die ID
     val movieAdapter = MovieAdapter(){
         //Start MovieDetailActivity
         val intent = Intent(this, MovieDetailActivity ::class.java)
@@ -27,17 +32,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Update the recycler view
-        movieAdapter.updateList(MovieRepository.movieList())
-        movie_recycler_view.layoutManager = LinearLayoutManager(this)
+        //movie_recycler_view.layoutManager = LinearLayoutManager(this)
+        movie_recycler_view.layoutManager = GridLayoutManager(this,3)
         movie_recycler_view.adapter = movieAdapter
+
+        MovieRepository.movieList(
+            success = {
+                // handle success
+               movieAdapter.updateList(it)
+
+            },
+            error = {
+                // handle error
+                Log.e(getString(R.string.API_CALL), it)
+            }
+        )
     }
 
 
-
+    //TODO remove this ? wegen Flickern ?
+    //TODO den default Text von allen WEG !!!!! weil das UI update zu lange braucht
+/*
     override fun onRestart() {
         super.onRestart()
         //Update when coming back to this activity
-        movieAdapter.updateList(MovieRepository.movieList())
+        MovieRepository.movieList(
+            success = {
+                // handle success
+                movieAdapter.updateList(it)
+            },
+            error = {
+                // handle error
+                Log.e(getString(R.string.API_CALL), it)
+            }
+        )
     }
 
+ */
 }

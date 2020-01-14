@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Movie Review</string>
+    <string name="PASSING_ERROR">PASSING_ERROR</string>
+    <string name="PASSING_ERROR_CONTENT">Keine MovieID</string>
+    <string name="default_textView">DF_TextView</string>
+    <string name="director">Regisseur</string>
+    <string name="actors">Schauspieler</string>
+    <string name="genre">Genre</string>
+    <string name="release">Veröffentlichung</string>
+    <string name="plot">Handlung</string>
+    <string name="rate_movie">FILM BEWERTEN</string>
+    <string name="rate_this_movie">DIESEN FILM BEWERTEN</string>
+    <string name="accessToken">d872f391-16ed-4ddd-89ac-1cdd30e38133</string>
+    <string name="base_URL"> https://movies.bloder.xyz</string>
+    <string name="API_call_fail">Der Aufruf ist fehlgeschlagen</string>
+    <string name="API_CALL">API_CALL</string>
+    <string name="added_review">Bewertung wurde hinzugefügt</string>
+    <string name="poster_description">Film Poster</string>
+    <string name="backdrop_description">Film Hintergrund</string>
+</resources>
