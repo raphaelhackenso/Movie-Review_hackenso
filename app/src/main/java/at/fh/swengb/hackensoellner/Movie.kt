@@ -2,6 +2,7 @@ package at.fh.swengb.hackensoellner
 
 import com.squareup.moshi.JsonClass
 
+
 @JsonClass(generateAdapter = true)
 open class Movie(val id: String,
             val title: String,
@@ -13,6 +14,7 @@ open class Movie(val id: String,
 
     fun ratingAverage(): Double{
         var average = reviews.map { it.reviewValue }.average()
+
 
         if (average.isNaN()){
             return 0.0 // returning a default value if there is no review

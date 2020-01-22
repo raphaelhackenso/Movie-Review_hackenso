@@ -30,10 +30,13 @@
 
     <RatingBar
         android:id="@+id/rating_movie_ratingbar"
+        style="@android:style/Widget.Holo.RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:numStars="5"
+        android:scrollbarThumbHorizontal="@color/colorDefaultText"
+        android:scrollbarThumbVertical="@color/colorDefaultText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rating_movie_title" />
@@ -46,6 +49,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rating_movie_ratingbar" />

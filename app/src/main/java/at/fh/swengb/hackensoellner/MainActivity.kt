@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //TODO brauch ma da an API call für die ID
     val movieAdapter = MovieAdapter(){
         //Start MovieDetailActivity
         val intent = Intent(this, MovieDetailActivity ::class.java)
@@ -49,24 +48,4 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-
-    //TODO remove this ? wegen Flickern ?
-    //TODO den default Text von allen WEG !!!!! weil das UI update zu lange braucht
-/*
-    override fun onRestart() {
-        super.onRestart()
-        //Update when coming back to this activity
-        MovieRepository.movieList(
-            success = {
-                // handle success
-                movieAdapter.updateList(it)
-            },
-            error = {
-                // handle error
-                Log.e(getString(R.string.API_CALL), it)
-            }
-        )
-    }
-
- */
 }

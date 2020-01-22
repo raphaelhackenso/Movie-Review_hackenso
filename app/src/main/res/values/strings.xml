@@ -2,7 +2,7 @@
     <string name="app_name">Movie Review</string>
     <string name="PASSING_ERROR">PASSING_ERROR</string>
     <string name="PASSING_ERROR_CONTENT">No MovieID</string>
-    <string name="default_textView">DF_TextView</string>
+    <string name="default_textView">DF</string>
     <string name="director">Director</string>
     <string name="actors">Actors</string>
     <string name="genre">Genre</string>

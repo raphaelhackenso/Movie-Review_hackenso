@@ -10,6 +10,8 @@ import android.util.Log
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.item_movie.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -25,8 +27,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
         val movieId = intent.getStringExtra(MainActivity.EXTRA_MOVIE_ID)
 
-        //TODO richtige Werte für alle Texte und Bilder usw.
-        //TODO Glide implementieren
+
 
         if (movieId == null){
             Log.e(getString(R.string.PASSING_ERROR),getString(R.string.PASSING_ERROR_CONTENT))
@@ -40,9 +41,9 @@ class MovieDetailActivity : AppCompatActivity() {
             detail_movie_btn_rate.setOnClickListener{
                 val intent = Intent(this, MovieRatingActivity ::class.java)
 
-                //TODO wie zur nächsten Activity
+
                 //intent.putExtra(EXTRA_MOVIE_ID_RATING, MovieRepository.movieById(movieId)?.id)
-                intent.putExtra(EXTRA_MOVIE_ID_RATING, movieId) //TODO does this work
+                intent.putExtra(EXTRA_MOVIE_ID_RATING, movieId)
                 startActivityForResult(intent, ADD_OR_EDIT_RATING_REQUEST)
             }
 
@@ -53,25 +54,29 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun outputMovieDetails(inputId: String){
         //Private because of encapsulation
         //Use provided movie Id
-        //TODO MovieDetail von online API
 
-        MovieRepository.movieById(inputId,
+
+        MovieRepository.movieDetailById(inputId,
             success = { val movie =  it
                 if(movie == null){
                     Log.e(getString(R.string.PASSING_ERROR),getString(R.string.PASSING_ERROR_CONTENT))
                     finish()
                 } else{
+
+                    val myDecimalFormat = DecimalFormat("#.####")
+                    myDecimalFormat.roundingMode = RoundingMode.CEILING
+
                     detail_movie_title.text =  movie.title
                     detail_movie_director_output.text = movie.director.name
                     detail_movie_actors_output.text = movie.actors.joinToString { it.name }
                     detail_movie_genre_output.text = movie.genres.joinToString { it }
                     detail_movie_avg_ratingbar.rating = movie.ratingAverage().toFloat()
-                    detail_movie_avg_ratings.text = movie.ratingAverage().toString()
+                    detail_movie_avg_ratings.text = myDecimalFormat.format(movie.ratingAverage())
                     detail_movie_rating_count.text = movie.reviews.count().toString()
                     detail_movie_release_output.text = movie.release
                     detail_movie_plot_description.text = movie.plot
 
-                    //TODO does this work with glide
+
                     Glide
                         .with(detail_movie_image_poster)
                         .load(movie.posterImagePath)

@@ -37,7 +37,7 @@ class MovieAdapter(val clickListener: (movie: Movie) -> Unit): RecyclerView.Adap
 class MovieViewHolder(itemView: View, val clickListener: (movie: Movie) -> Unit): RecyclerView.ViewHolder(itemView){
     fun bindItem(movie: Movie){
 
-        //TODO für alle das richtige und die neuen Bilder
+
         //Output content for one movie item
         itemView.item_movie_title.text = movie.title
         Glide
@@ -46,7 +46,6 @@ class MovieViewHolder(itemView: View, val clickListener: (movie: Movie) -> Unit)
             .into(itemView.image_movie_poster_item)
 
 
-        //TODO GLIDE implementieren!
 
         itemView.setOnClickListener{
             clickListener(movie)

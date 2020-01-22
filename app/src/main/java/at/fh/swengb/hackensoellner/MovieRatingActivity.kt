@@ -27,7 +27,7 @@ class MovieRatingActivity : AppCompatActivity() {
         } else {
 
             //output movie title
-            MovieRepository.movieById(movieId,
+            MovieRepository.movieDetailById(movieId,
                 success = { rating_movie_title.text =  it.title },
                 error = { Log.e(getString(R.string.API_CALL), it)})
 
@@ -39,6 +39,8 @@ class MovieRatingActivity : AppCompatActivity() {
                     rating_movie_ratingbar.rating.toDouble(),
                     rating_movie_feedback.text.toString()
                 )
+
+
 
                 MovieRepository.rateMovie( movieId, myMovieReviewObject,
                     success = {Log.i(getString(R.string.API_CALL), getString(R.string.added_review))},

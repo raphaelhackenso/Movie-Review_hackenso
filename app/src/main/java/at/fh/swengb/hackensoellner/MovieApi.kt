@@ -11,7 +11,7 @@ import retrofit2.http.Path
 
 
 object MovieApi {
-    const val accessToken = "d872f391-16ed-4ddd-89ac-1cdd30e38133" //TODO ask how to use the string resources
+    const val accessToken = "d872f391-16ed-4ddd-89ac-1cdd30e38133"
     val retrofit: Retrofit
     val retrofitService: MovieApiService
     init {
@@ -23,14 +23,14 @@ object MovieApi {
         retrofitService = retrofit.create(MovieApiService::class.java)
     }
 }
-//TODO how to use String resources
+
 interface MovieApiService {
     @GET("/${MovieApi.accessToken}/movies")
     fun movies(): Call<List<Movie>>
 
     @GET("/${MovieApi.accessToken}/movies/{id}")
-    fun movieByID(@Path("id") movieId: String):Call<MovieDetail>
+    fun movieDetailByID(@Path("id") movieId: String):Call<MovieDetail>
 
     @POST("/${MovieApi.accessToken}/movies/{id}/rate")
-    fun rateMovie(@Path("id") movieId: String, @Body rating: Review):Call<Unit> //TODO this Review or MovieRating
+    fun rateMovie(@Path("id") movieId: String, @Body rating: Review):Call<Unit>
 }
